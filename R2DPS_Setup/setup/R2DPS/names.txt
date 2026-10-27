@@ -1,0 +1,54 @@
+# R2DPS display names:   internal id = name to show
+# The game only exposes English internal ids for weapons / mods / skills / status effects.
+# Write the official Chinese name after "=". Anything not listed shows the id.
+# Ids seen in combat that are missing here are written to names_todo.txt (log folder) automatically.
+# Lines starting with # are ignored. Save this file as UTF-8.
+#
+# [核实] = found in Chinese guides   [暂译] = my translation, check against the game and fix
+
+# ---- categories (panel labels) ----
+cat_long = 长枪
+cat_hand = 手枪
+cat_melee = 近战
+cat_mod = 改装
+cat_skill = 技能
+cat_summon = 召唤
+cat_other = 其他
+
+# ---- status effects (all [暂译]) ----
+Bleed = 流血
+Burning = 燃烧
+Overloaded = 过载
+Corroded = 腐蚀
+Shock = 电击
+Curse = 诅咒
+Blight = 枯萎
+DOT = 持续伤害
+
+# ---- weapons ----
+# [核实] Enigma = 奥秘手枪
+Enigma = 奥秘手枪
+# [核实] Chicago Typewriter = 芝加哥打字机 (internal id TommyGun)
+TommyGun = 芝加哥打字机
+# [核实] Hellfire = 地狱火
+Hellfire = 地狱火
+# [暂译] Crystal Staff
+CrystalStaff = 水晶法杖
+
+# ---- weapon mods (all [暂译]) ----
+ExplosiveShot = 爆炸射击
+AbrasiveRounds = 磨蚀弹
+ChaosDriver = 混沌驱动
+
+# ---- skills / summons (all [暂译]) ----
+# Invoker (祈求者, [核实]) skill: Way of Kaeula
+WayOfWater = 卡乌拉之道
+# Summoner skill: Minion: Hollow
+SummonHollowMinion = 仆从：空洞者
+Hollow = 空洞者
+
+# ---- damage types shown when the game gives no item (all [暂译]) ----
+Player_Shock_Skill = 电击技能
+Player_Elemental_Skill = 元素技能
+Player_AOE_Physical_Power_02 = 物理范围爆炸
+DOT_Burning_Imbued_HandGun = 手枪附加燃烧

@@ -1,0 +1,118 @@
+# R2DPS config  (lines starting with # are comments)
+# config_version tells the installer whether this file needs to be replaced on update. Do not change it.
+config_version = 5
+#
+# Positions / sizes are in 1080p units: the game scales them for 1440p / 4K automatically.
+# *_offset_x = gap between the box and the screen edge it is attached to (right edge unless noted)
+# *_offset_y = gap between the box's top and the top of the screen
+
+# ---------- small HUD (under the minimap, never clickable) ----------
+hud_enabled = 1
+hud_offset_x = 40
+# 470 = below the game's notifications ("trait points available" ...). Larger = lower.
+hud_offset_y = 470
+hud_width = 300
+hud_row_height = 26
+hud_font_size = 14
+# 1 to 4
+hud_max_players = 4
+hud_show_title = 1
+hud_bg_alpha = 0.55
+
+# ---------- detail panel while holding the key (combat) ----------
+# Key to show the detail panel during combat (UE4SS key names: H, F10, CAPS_LOCK ...).
+# Keys are read from the game itself, so they only react while you are in play (not in menus / chat).
+detail_key = H
+# auto   = tap: panel stays open until you press again / hold: open while held, closes on release
+# hold   = only while held        toggle = press once to show, again to hide
+detail_key_mode = auto
+# a press shorter than this (seconds) counts as a tap in auto mode
+detail_tap_time = 0.35
+# what the combat panel shows with 2+ players: auto = team overview, self = your own page
+hold_page = auto
+# left or right side of the screen (left is empty during combat, right has the minimap)
+hold_side = left
+hold_width = 520
+hold_offset_x = 40
+# 190 = below the teammate portraits at the top-left (co-op)
+hold_offset_y = 190
+# the panel grows with its content up to this height (keeps clear of the bottom-left HUD)
+hold_max_height = 720
+# 1 = also show the DPS chart in this panel
+hold_show_chart = 0
+hold_bg_alpha = 0.86
+# Optional key to clear the current fight (empty = none), e.g. F10
+reset_key =
+
+# ---------- Tab menu "fragments" page ----------
+# collapsed card (click it to expand)
+tab_label_width = 300
+tab_label_offset_x = 60
+tab_label_offset_y = 84
+# expanded panel: fills the right column of the page
+panel_width = 566
+panel_height = 918
+panel_offset_x = 32
+panel_offset_y = 82
+panel_bg_alpha = 0.90
+# max sources listed under each damage category (fewer are shown when space runs out)
+panel_sources = 3
+
+# ---------- look ----------
+# 1 = sliding panels, growing bars, rolling numbers, hover highlight   0 = static (lightest)
+animations = 1
+# DPS chart: seconds per column (long fights merge columns automatically, max 60 columns)
+chart_bucket = 2
+# colors (#RRGGBB)
+color_accent = #D9C18D
+color_boss = #9E2328
+color_elite = #B0662A
+color_long = #E0913F
+color_hand = #E8CF5A
+color_melee = #D9534A
+color_mod = #4DB6E2
+color_skill = #A67FE8
+color_summon = #5FC98F
+color_other = #8D8D8D
+# you are always color_player_self, teammates get 2 / 3 / 4 in the order they first deal damage
+color_player_self = #E6C278
+color_player_2 = #6CB4EE
+color_player_3 = #E7837C
+color_player_4 = #93D38A
+
+# ---------- statistics ----------
+# Gaps longer than this many seconds without player damage are not counted as combat time
+idle_gap = 5
+# Live DPS window on the HUD (seconds)
+dps_window = 5
+# Number of top-health-bar fights (boss / elite) kept in history
+history_max = 10
+# health = count only damage that actually removed HP (no overkill)   raw = count full hit damage
+damage_mode = health
+# 1 = also count tiny self-regeneration ticks as healing
+count_heal_regen = 0
+
+# ---------- safety ----------
+# 0 = statistics only: no HUD, no panels, no key / click handling (the debug log still records fights).
+# Use this if the game ever crashes again, to tell whether the UI part is involved.
+ui_enabled = 1
+
+# ---------- boss / elite bars ----------
+# seconds between searches for top health bars while a fight runs without one (searching is slow;
+# when idle the mod never searches on a timer)
+bar_search_interval = 10
+# 1 = once per map, when a fight runs 15 s without a top bar, list bar-like widgets in the debug log
+diag_bars = 1
+
+# ---------- debug log ----------
+# writes R2DPS_debug.txt (hook status, first damage events, fights, clicks, and every 30 s how often
+# the hooks fired + every operation that took 2 ms or more). Attach it when you report a problem.
+debug = 1
+debug_max_lines = 4000
+# folder for R2DPS_debug.txt / names_todo.txt. Empty = this mod folder; if that folder cannot be
+# written (game installed under a non-ASCII folder name), %LOCALAPPDATA%\Remnant2\Saved\Logs is used.
+# Only use a folder that already exists and whose path has no Chinese / non-ASCII characters.
+log_dir =
+
+# ---------- advanced: hooked functions (only change if a game update breaks them) ----------
+host_damage_hooks = /Game/_Core/GameModes/BP_RemnantGameMode.BP_RemnantGameMode_C:PostApplyDamage

@@ -1,0 +1,12 @@
+# UE4SS build: bundled into the release zip, not stored in git (see THIRD_PARTY_NOTICES.md)
+R2DPS_Setup/setup/ue4ss_bundle/*.zip
+
+# release builds
+dist/
+
+# files the mod / game writes at runtime
+R2DPS_debug.txt
+names_todo.txt
+config_backup_v*.txt
+*.dmp
+*.log
